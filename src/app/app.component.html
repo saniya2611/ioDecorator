@@ -1,0 +1,43 @@
+<h1 class="bg-danger p-4 text-center text-black mb-4"><strong>Products</strong></h1>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="productName">
+          Product Name
+        </label>
+        <input type="text" id="productName" #productName class="form-control">
+      </div>
+    <div class="form-group">
+      <label for="productDesciption">
+        Product Description
+      </label>
+      <input type="text" id="productDesciption" #productDesc class="form-control">
+    </div>
+    <div class="form-group text-right">
+      <button class="btn btn-warning mr-4" (click) ="addProductDetails(productName, productDesc,'Product')">Add as Product</button>
+      <button class="btn btn-success" (click) ="addCatlogs(productName, productDesc,'Catlog')">Add as Catlog</button>
+    </div>
+  </div>
+    <div class="col-md-6">
+      <div class="card mb-4"
+       *ngFor="let prod of productArray"
+       [ngClass]="{
+        'bg-warning' : prod.pCatg === 'Product',
+        'bg-success' : prod.pCatg === 'Catlog'
+       }">
+        <div class="card-header">
+          <h3>
+            {{prod.pName}}
+          </h3>
+        </div>
+        <div class="card-body">
+          <p>
+            {{prod.pDesc}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
